@@ -4,10 +4,10 @@
     </header>
 </template>
 
-<script setup>
+<script land="ts">
+import { ref } from 'vue'
+export default {
+    name: 'HeaderItem',
+}
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

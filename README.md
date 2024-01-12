@@ -1,18 +1,39 @@
-# Vue 3 + TypeScript + Vite
+# VOX Recruitment task 
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Installation
+1. Clone this repo: `https://github.com/GabrielaGodek/vox-recruitment-task`.
+2. Install dependencies `npm install`.
+3. Run the application `npm run dev`, it will open `http://localhost:5173/`.
+4. Use button at the bottom left to add first tile.
 
-## Recommended IDE Setup
+## Dependencies
+- Vite `^5.0.8`
+- Sass `^1.69.7`
+- Vitest `^1.2.0`
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Tests
+src/
+ \_\_tests\_\_
 
-## Type Support For `.vue` Imports in TS
+There are two tests: one for checking configuration (`sanity.test.ts`) and another for verifying if the Tile renders correctly at the front (`TileItem.test.ts`).
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### Run test
+In the console at the root directory, type `npm run test`.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Color validation
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+```ts
+const isValid = (code: string): boolean => {
+    code = code.toLowerCase()
+    if(code.startsWith('rgb')){
+        // rgbPattern matches rgb(X, X, X) or rgba(X, X, X, Y), where X is a number from 0 to 255, and Y is a number from 0 to 1 (optional).
+        const rgbPattern: RegExp = /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/
+        return rgbPattern.test(code)
+    }
+    if (code.startsWith('#') && (code.length === 7 || code.length === 4)) {
+        const hexPattern: RegExp = /^#[a-f0-9]{6}$|^#[a-f0-9]{3}$/;
+        return hexPattern.test(code)
+    } 
+    return false
+}
+```

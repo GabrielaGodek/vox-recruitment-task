@@ -7,14 +7,20 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
+    "test": "vitest --dom",
     "sass": "sass --watch --update --style=expanded src/styles/sass:src/styles/css"
   },
   "dependencies": {
+    "happy-dom": "^6.0.4",
     "sass": "^1.69.7",
-    "vue": "^3.3.11"
+    "vitest": "^1.2.0",
+    "vue": "^3.3.11",
+    "vue-drag-drop": "^1.1.4",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
+    "@vue/test-utils": "^2.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vue-tsc": "^1.8.25"

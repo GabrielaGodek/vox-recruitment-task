@@ -2,19 +2,60 @@ body {
   margin: 20px;
 }
 
+header h1 {
+  text-align: center;
+  font-family: Verdana, sans-serif;
+}
+
+button {
+  appearance: none;
+  color: #fafafa;
+  border: 1px solid #35353e;
+  background-color: #35353e;
+  padding: 2px 5px;
+  transition: all 0.3s ease;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+  color: #35353e;
+}
+
 .wrapper {
   height: 80vh;
   max-width: 100vw;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
   gap: 5px;
   overflow: auto;
 }
 
 .tile {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+}
+.tile .tile__buttons {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+}
+.tile .tile__buttons .tile__button {
+  flex: 1 1 50%;
+}
+.tile .tile__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tile .tile__form .tile__input {
+  width: 100%;
+}
+.tile .tile__form__error-msg {
+  color: rgb(191, 40, 40);
 }
 
 /*# sourceMappingURL=style.css.map */
